@@ -1,10 +1,9 @@
-import pandas as pd
 import requests
 import string
 import xml.etree.ElementTree as ET
 import streamlit as st
 import csv
-import pandas as pd  # Add this line to import Pandas
+import pandas as pd  # Import Pandas once
 
 # Function to extract autosuggest keywords
 def extract_autosuggest_keywords(keyword, country):
@@ -31,7 +30,7 @@ def main():
     keywords_input = st.text_area("Paste your list of keywords here (one keyword per line)")
 
     # Country selection
-    country = st.selectbox("Select country for autosuggestions", ["de", "us", "uk"])  # Add more countries as needed
+    country = st.selectbox("Select country for autosuggestions", ["de", "us", "uk", "in", "es"])  # Add more countries as needed
 
     # Button to extract keywords
     if st.button("Get Results"):
