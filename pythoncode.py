@@ -17,6 +17,15 @@ def extract_autosuggest_keywords(keyword, country):
 # Streamlit app
 def main():
     st.title("Google Autosuggest Keyword Extractor")
+    st.markdown(
+        """
+        <p style="font-style: italic;">
+            Created by <a href="https://www.linkedin.com/in/kunjal-chawhan/" target="_blank">Kunjal Chawhan</a> |
+            <a href="https://www.decodedigitalmarket.com" target="_blank">More Apps & Scripts on my Website</a>
+        </p>
+        """,
+        unsafe_allow_html=True
+    )
 
     # Text input for keywords
     keywords_input = st.text_area("Paste your list of keywords here (one keyword per line)")
