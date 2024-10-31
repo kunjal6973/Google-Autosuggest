@@ -1,14 +1,14 @@
 import requests
 import xml.etree.ElementTree as ET
 import streamlit as st
-import pandas as pd  # Import Pandas
+import pandas as pd
 
-# Function to extract autosuggest keywords
+# Function to extract autosuggest keywords (no change needed here)
 def extract_autosuggest_keywords(keyword, country):
     try:
         apiurl = f"http://suggestqueries.google.com/complete/search?output=toolbar&hl={country}&q={keyword}"
         r = requests.get(apiurl)
-        r.raise_for_status()  # To ensure we get proper responses
+        r.raise_for_status()
         tree = ET.fromstring(r.content)
         suggestions = [child.attrib['data'] for child in tree.iter('suggestion')]
         return [suggestion for suggestion in suggestions if not any(kw in suggestion.lower() for kw in ['pinterest', 'jpg', 'png', 'svg', 'amazon', 'facebook', 'instagram', 'tiktok'])][:5]
@@ -36,7 +36,7 @@ def main():
     keywords_input = st.text_area("Paste your list of keywords here (one keyword per line)")
 
     # Country selection
-    country = st.selectbox("Select country for autosuggestions", ["de", "us", "uk", "in", "es"])  # Add more countries as needed
+    country = st.selectbox("Select country for autosuggestions", ["de", "us", "uk", "in", "es"])
 
     # Button to extract keywords
     if st.button("Get Results"):
